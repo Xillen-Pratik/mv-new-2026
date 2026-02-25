@@ -5,7 +5,7 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import Image from 'next/image';
-
+// Testimonials data
 const testimonials = [
   {
     id: 1,
