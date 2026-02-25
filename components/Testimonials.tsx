@@ -97,7 +97,10 @@ export default function Testimonials() {
                   key={testimonial.id} 
                   className={`flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4 transition-all duration-500 ease-out py-10`}
                 >
-                  <div className={`h-full bg-slate-800 rounded-2xl p-8 border border-slate-700 relative group transition-all duration-300 ${isSelected ? 'scale-105 shadow-2xl shadow-purple-500/20 border-purple-500/50 z-10' : 'scale-95 opacity-70 hover:opacity-100'}`}>
+                  <div className={`h-full rounded-3xl p-8 flex flex-col justify-between transition-all duration-500 ${
+                    isSelected 
+                      ? 'bg-gradient-to-r from-[#4D49B1] via-[#4C3AD080] to-[#5C41FF33] border border-[#5C41FF4D] scale-110 z-10 shadow-2xl shadow-indigo-900/20' 
+                      : 'bg-[#1F293780] border border-[#374151] scale-95 opacity-60'}`}>
                     <Quote className="absolute top-6 right-6 text-slate-700 w-8 h-8 group-hover:text-purple-500/20 transition-colors" />
                     
                     <div className="flex gap-1 mb-6">

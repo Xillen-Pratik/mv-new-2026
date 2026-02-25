@@ -2,100 +2,122 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Sparkles, Heart, ShoppingBag, Coffee, Home } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 
 type TabData = {
   id: string;
   label: string;
-  icon: React.ElementType;
   heading: string;
-  subtext: string;
-  bullets: string[];
-  buttonText: string;
-  imageSrc: string; // Placeholder
-  color: string;
+  subheading: string;
+  features: string[];
+  whyItMatters: string;
+  ctaText: string;
+  imageSrc: string; // Placeholder for now, can be swapped with real screenshots
+  bgColor: string; // Background color for the content area
 };
 
 const tabs: TabData[] = [
   {
     id: 'beauty',
-    label: 'Beauty & Skincare',
-    icon: Sparkles,
-    heading: 'Your App Becomes a Daily Skincare Companion',
-    subtext: 'Don\'t just sell products. Help customers track their routine, analyze their skin, and get personalized recommendations.',
-    bullets: [
-      'AI Skin Analysis & Product Matching',
-      'Daily Routine Tracker & Reminders',
-      'Before & After Progress Photos',
-      'Ingredient Glossary & Education'
+    label: 'Beauty & Cosmetics',
+    heading: 'YOUR APP BECOMES A DAILY SKINCARE COMPANION',
+    subheading: 'UTILITY FEATURES',
+    features: [
+      'AI Skin Analysis from Photo',
+      'Personalized Product Recs',
+      'Skincare Routine Reminders',
+      'Before/After Progress Tracker',
+      'Product Ingredient Scanner'
     ],
-    buttonText: 'See Beauty Demo',
-    imageSrc: '/images/mm1xac6f-5ox8odn.png', // Placeholder
-    color: 'bg-pink-100 text-pink-600 border-pink-200 hover:bg-pink-50',
+    whyItMatters: "Your customers don't just buy skincare they follow routines. Give them a reason to open your app every morning.",
+    ctaText: 'SEE BEAUTY & SKINCARE CASE STUDY',
+    imageSrc: '/images/mm1xac6f-5ox8odn.png',
+    bgColor: 'bg-[#FFF5F5]', // Light pink
   },
   {
-    id: 'health',
-    label: 'Health & Wellness',
-    icon: Heart,
-    heading: 'More Than Just Supplements: A Wellness Hub',
-    subtext: 'Transform one-time buyers into subscribers by offering health tracking, hydration reminders, and expert content.',
-    bullets: [
-      'Custom Vitamin Packs Quiz',
-      'Hydration & Habit Tracker',
-      'Subscription Management Portal',
-      'Exclusive Wellness Content Library'
+    id: 'grocery',
+    label: 'Grocery & Food',
+    heading: 'FROM CRAVINGS TO CHECKOUT IN SECONDS',
+    subheading: 'UTILITY FEATURES',
+    features: [
+      'One-Tap Reorder',
+      'Recipe Hub & Shopping List',
+      'Subscription Box Builder',
+      'Delivery Tracking Integration',
+      'Dietary Preference Filter'
     ],
-    buttonText: 'See Health Demo',
-    imageSrc: '/images/mm1xac6f-7q8chy7.png',
-    color: 'bg-green-100 text-green-600 border-green-200 hover:bg-green-50',
+    whyItMatters: "Food is a high-frequency purchase. Make reordering so easy they never think about going to a competitor.",
+    ctaText: 'SEE GROCERY CASE STUDY',
+    imageSrc: '/images/mm1xac6f-g35y8ex.png',
+    bgColor: 'bg-[#F0FDF4]', // Light green
   },
   {
     id: 'fashion',
     label: 'Fashion & Apparel',
-    icon: ShoppingBag,
-    heading: 'The Ultimate Personal Stylist in Their Pocket',
-    subtext: 'Create an immersive shopping experience with virtual try-ons, style quizzes, and instant drop notifications.',
-    bullets: [
+    heading: 'THE ULTIMATE PERSONAL STYLIST IN THEIR POCKET',
+    subheading: 'UTILITY FEATURES',
+    features: [
       'Virtual Try-On (AR)',
       'Style Quiz & Personalized Feed',
       'Back-in-Stock Push Notifications',
-      'Visual Search & Lookbooks'
+      'Visual Search & Lookbooks',
+      'Size Recommender'
     ],
-    buttonText: 'See Fashion Demo',
+    whyItMatters: "Fashion is about expression. Help them find their perfect look and they'll reward you with loyalty.",
+    ctaText: 'SEE FASHION CASE STUDY',
     imageSrc: '/images/mm1xac6f-g05npow.png',
-    color: 'bg-purple-100 text-purple-600 border-purple-200 hover:bg-purple-50',
+    bgColor: 'bg-[#F5F3FF]', // Light purple
   },
   {
-    id: 'food',
-    label: 'Food & Beverage',
-    icon: Coffee,
-    heading: 'From Cravings to Checkout in Seconds',
-    subtext: 'Make reordering seamless. Perfect for coffee subscriptions, meal kits, and artisanal snacks.',
-    bullets: [
-      'One-Tap Reorder',
-      'Subscription Box Builder',
-      'Recipe Hub & Shopping List',
-      'Delivery Tracking Integration'
+    id: 'health',
+    label: 'Healthcare & Wellness',
+    heading: 'MORE THAN JUST SUPPLEMENTS: A WELLNESS HUB',
+    subheading: 'UTILITY FEATURES',
+    features: [
+      'Custom Vitamin Packs Quiz',
+      'Hydration & Habit Tracker',
+      'Subscription Management Portal',
+      'Exclusive Wellness Content',
+      'Expert Consultation Booking'
     ],
-    buttonText: 'See Food Demo',
-    imageSrc: '/images/mm1xac6f-g35y8ex.png',
-    color: 'bg-orange-100 text-orange-600 border-orange-200 hover:bg-orange-50',
+    whyItMatters: "Wellness is a journey. Be the partner that helps them reach their goals, not just the store that sells them pills.",
+    ctaText: 'SEE HEALTH CASE STUDY',
+    imageSrc: '/images/mm1xac6f-7q8chy7.png',
+    bgColor: 'bg-[#ECFEFF]', // Light cyan
   },
   {
-    id: 'home',
-    label: 'Home & Garden',
-    icon: Home,
-    heading: 'Design Their Dream Space with Your App',
-    subtext: 'Help customers visualize your products in their home with AR and room planners.',
-    bullets: [
-      'AR Furniture Placement',
-      'Room Planner Tools',
-      'Plant Care Reminders',
-      'Installation Guides & Videos'
+    id: 'electronics',
+    label: 'Electronics',
+    heading: 'TECH SUPPORT & GUIDES AT THEIR FINGERTIPS',
+    subheading: 'UTILITY FEATURES',
+    features: [
+      'Product Compatibility Checker',
+      'Warranty Registration & Tracking',
+      'Setup Guides & Video Tutorials',
+      'Trade-In Value Calculator',
+      'Exclusive Early Access Drops'
     ],
-    buttonText: 'See Home Demo',
-    imageSrc: '/images/mm1xac6f-g8i4lgn.png',
-    color: 'bg-blue-100 text-blue-600 border-blue-200 hover:bg-blue-50',
+    whyItMatters: "Tech purchases are research-heavy. Simplify the decision process and support them after the sale.",
+    ctaText: 'SEE ELECTRONICS CASE STUDY',
+    imageSrc: '/images/mm1xac6f-mytsr3j.png', // Reusing placeholder, need specific one if available
+    bgColor: 'bg-[#F8FAFC]', // Light slate
+  },
+  {
+    id: 'your-industry',
+    label: 'Your Industry',
+    heading: 'TAILORED SOLUTIONS FOR ANY BUSINESS MODEL',
+    subheading: 'UTILITY FEATURES',
+    features: [
+      'Custom Feature Development',
+      'API Integrations',
+      'Loyalty Program Migration',
+      'Internationalization Support',
+      'Enterprise SLA'
+    ],
+    whyItMatters: "Every business is unique. We build the specific tools your customers need to stay engaged.",
+    ctaText: 'CONTACT OUR STRATEGY TEAM',
+    imageSrc: '/images/mm1xac6f-1ls4l4z.png', // Reusing placeholder
+    bgColor: 'bg-[#FFFFFF] border border-slate-100', // White with border
   },
 ];
 
@@ -107,30 +129,29 @@ export default function IndustryTabs() {
     <section className="py-20 lg:py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <span className="inline-block px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold tracking-wider uppercase mb-4 border border-indigo-100">
-            Industry Specific Features
+          <span className="inline-block px-3 py-1 text-indigo-600 text-xs font-bold tracking-wider uppercase mb-4">
+            BUILT FOR YOUR INDUSTRY
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900">
-            Features Tailored to Your Industry
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 leading-tight">
+            Industry-Specific Features That Make Your <br className="hidden md:block" />
+            App Indispensable
           </h2>
         </div>
 
         {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-4 mb-12">
           {tabs.map((tab) => {
             const isActive = activeTabId === tab.id;
-            const Icon = tab.icon;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all border ${
+                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all border ${
                   isActive
-                    ? 'bg-slate-900 text-white border-slate-900 shadow-md transform scale-105'
-                    : 'bg-white text-slate-600 border-slate-200 hover:bg-slate-50 hover:border-slate-300'
+                    ? 'bg-[#5D5CDE] text-white border-[#5D5CDE] shadow-md'
+                    : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-700'
                 }`}
               >
-                <Icon className={`w-4 h-4 ${isActive ? 'text-white' : 'text-slate-400'}`} />
                 {tab.label}
               </button>
             );
@@ -138,12 +159,11 @@ export default function IndustryTabs() {
         </div>
 
         {/* Tab Content */}
-        <div className="relative bg-orange-50/50 rounded-3xl p-8 lg:p-12 border border-orange-100 overflow-hidden transition-all duration-500 min-h-[500px]">
-           {/* Peach BG mentioned in prompt */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left: Image (Phone) */}
-            <div className={`relative transition-opacity duration-500 ease-in-out ${activeTab ? 'opacity-100' : 'opacity-0'}`}>
-               <div className="relative mx-auto w-[280px] md:w-[320px] aspect-[9/19] bg-slate-900 rounded-[3rem] border-8 border-slate-900 shadow-2xl overflow-hidden ring-1 ring-slate-900/5">
+        <div className={`relative rounded-[2.5rem] p-8 lg:p-16 overflow-hidden transition-all duration-500 min-h-[600px] ${activeTab.bgColor}`}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Left: Phone Image */}
+            <div className={`relative transition-all duration-500 ease-in-out transform ${activeTab ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
+               <div className="relative mx-auto w-[280px] md:w-[320px] aspect-[9/19] bg-black rounded-[3rem] border-[8px] border-black shadow-2xl overflow-hidden ring-1 ring-black/5">
                  <Image
                    key={activeTab.imageSrc} // Force re-render for animation
                    src={activeTab.imageSrc}
@@ -151,38 +171,50 @@ export default function IndustryTabs() {
                    fill
                    className="object-cover animate-in fade-in zoom-in duration-500"
                  />
+                 {/* Notch */}
+                 <div className="absolute top-0 left-1/2 -translate-x-1/2 h-6 w-32 bg-black rounded-b-xl z-20" />
                </div>
             </div>
 
             {/* Right: Content */}
-            <div className={`space-y-6 transition-all duration-500 ease-in-out ${activeTab ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl ${activeTab.color.split(' ')[0]} ${activeTab.color.split(' ')[1]}`}>
-                <activeTab.icon className="w-6 h-6" />
+            <div className={`space-y-8 transition-all duration-500 ease-in-out ${activeTab ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
+              
+              <div>
+                <span className="text-pink-500 font-bold text-xs tracking-widest uppercase mb-2 block">
+                   {activeTab.label.toUpperCase()}
+                </span>
+                <h3 className="text-3xl md:text-4xl font-extrabold text-slate-900 leading-tight uppercase">
+                  {activeTab.heading}
+                </h3>
               </div>
-              
-              <h3 className="text-3xl font-bold text-slate-900 leading-tight">
-                {activeTab.heading}
-              </h3>
-              
-              <p className="text-lg text-slate-600">
-                {activeTab.subtext}
-              </p>
 
-              <ul className="space-y-3 pt-4">
-                {activeTab.bullets.map((bullet, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-slate-700 font-medium">
-                    <div className="w-6 h-6 rounded-full bg-white border border-slate-200 flex items-center justify-center text-green-500 shadow-sm text-xs">
-                      ✓
-                    </div>
-                    {bullet}
-                  </li>
-                ))}
-              </ul>
+              <div>
+                <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-4">
+                  {activeTab.subheading}
+                </h4>
+                <ul className="space-y-3">
+                  {activeTab.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3 text-slate-700 text-base">
+                      <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-              <div className="pt-6">
-                <button className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white bg-slate-900 hover:bg-slate-800 rounded-full transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
-                  {activeTab.buttonText}
-                  <ArrowRight className="w-4 h-4 ml-2" />
+              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100/50">
+                <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wide mb-2">
+                  WHY IT MATTERS
+                </h4>
+                <p className="text-slate-600 leading-relaxed">
+                  {activeTab.whyItMatters}
+                </p>
+              </div>
+
+              <div className="pt-2">
+                <button className="inline-flex items-center text-sm font-bold text-pink-500 hover:text-pink-600 tracking-wide uppercase group">
+                  {activeTab.ctaText}
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" />
                 </button>
               </div>
             </div>
