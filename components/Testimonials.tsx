@@ -1,0 +1,167 @@
+"use client";
+
+import React, { useState, useEffect, useCallback } from 'react';
+import useEmblaCarousel from 'embla-carousel-react';
+import Autoplay from 'embla-carousel-autoplay';
+import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
+import Image from 'next/image';
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Jenkins",
+    role: "Founder, Glow Beauty",
+    image: "/images/mm1xac6f-mw7mz66.png", // Placeholder
+    content: "Mobivogue transformed our business. We saw a 30% increase in retention within the first month. The push notifications are a game changer.",
+    stars: 5,
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "CEO, Urban Wear",
+    image: "/images/mm1xac6f-mytsr3j.png",
+    content: "The best investment we made this year. Setting it up took less than 24 hours and the support team is incredible.",
+    stars: 5,
+  },
+  {
+    id: 3,
+    name: "Jessica Williams",
+    role: "Marketing Director, Pure Life",
+    image: "/images/mm1xac6f-nj7n79t.png",
+    content: "Our customers love the app. It's faster than our mobile site and the exclusive app-only drops sell out in minutes.",
+    stars: 5,
+  },
+  {
+    id: 4,
+    name: "David Miller",
+    role: "Owner, Tech Gadgets",
+    image: "/images/mm1xac6f-o0x5702.png",
+    content: "Seamless integration with Shopify. Inventory syncs perfectly and the design customization is top notch.",
+    stars: 5,
+  },
+  {
+    id: 5,
+    name: "Emma Davis",
+    role: "Founder, Little Steps",
+    image: "/images/mm1xac6f-um75dyw.png",
+    content: "I was skeptical at first, but the results speak for themselves. Mobile app revenue now accounts for 40% of our total sales.",
+    stars: 5,
+  },
+];
+
+export default function Testimonials() {
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'center', skipSnaps: false },
+    [Autoplay({ delay: 4000, stopOnMouseEnter: true })]
+  );
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
+    emblaApi.on('select', onSelect);
+    emblaApi.on('reInit', onSelect);
+  }, [emblaApi, onSelect]);
+
+  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
+  const scrollTo = useCallback((index: number) => emblaApi && emblaApi.scrollTo(index), [emblaApi]);
+
+  return (
+    <section className="py-20 lg:py-24 bg-slate-900 text-white overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            Merchants Who Turned Their Apps Into Daily Habits
+          </h2>
+          <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+            Join thousands of Shopify brands that are building stronger relationships with their customers through their own mobile app.
+          </p>
+        </div>
+
+        <div className="relative max-w-6xl mx-auto">
+          {/* Carousel Viewport */}
+          <div className="overflow-hidden px-4" ref={emblaRef}>
+            <div className="flex -ml-4">
+              {testimonials.map((testimonial, index) => {
+                 const isSelected = index === selectedIndex;
+                 return (
+                <div 
+                  key={testimonial.id} 
+                  className={`flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4 transition-all duration-500 ease-out py-10`}
+                >
+                  <div className={`h-full bg-slate-800 rounded-2xl p-8 border border-slate-700 relative group transition-all duration-300 ${isSelected ? 'scale-105 shadow-2xl shadow-purple-500/20 border-purple-500/50 z-10' : 'scale-95 opacity-70 hover:opacity-100'}`}>
+                    <Quote className="absolute top-6 right-6 text-slate-700 w-8 h-8 group-hover:text-purple-500/20 transition-colors" />
+                    
+                    <div className="flex gap-1 mb-6">
+                      {[...Array(testimonial.stars)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+                      ))}
+                    </div>
+
+                    <p className="text-slate-300 mb-8 italic leading-relaxed">
+                      &quot;{testimonial.content}&quot;
+                    </p>
+
+                    <div className="flex items-center gap-4 mt-auto">
+                      <div className="w-12 h-12 rounded-full bg-slate-700 relative overflow-hidden border-2 border-slate-600">
+                         {/* Placeholder Avatar */}
+                         <Image 
+                           src={testimonial.image} 
+                           alt={testimonial.name}
+                           fill
+                           className="object-cover"
+                         />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-white text-sm">{testimonial.name}</h4>
+                        <p className="text-xs text-slate-400">{testimonial.role}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )})}
+            </div>
+          </div>
+
+          {/* Navigation Buttons */}
+          <button 
+            onClick={scrollPrev}
+            className="absolute top-1/2 -left-4 lg:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-800 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-700 transition-colors z-20 shadow-lg"
+            aria-label="Previous slide"
+          >
+            <ChevronLeft className="w-5 h-5" />
+          </button>
+          <button 
+            onClick={scrollNext}
+            className="absolute top-1/2 -right-4 lg:-right-12 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-800 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-700 transition-colors z-20 shadow-lg"
+            aria-label="Next slide"
+          >
+            <ChevronRight className="w-5 h-5" />
+          </button>
+
+          {/* Dots */}
+          <div className="flex justify-center gap-2 mt-10">
+            {scrollSnaps.map((_, index) => (
+              <button
+                key={index}
+                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                  index === selectedIndex ? 'bg-purple-500 w-8' : 'bg-slate-600 hover:bg-slate-500'
+                }`}
+                onClick={() => scrollTo(index)}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
