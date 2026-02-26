@@ -5,13 +5,13 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import Image from 'next/image';
-// Testimonials data
+
 const testimonials = [
   {
     id: 1,
     name: "Sarah Jenkins",
     role: "Founder, Glow Beauty",
-    image: "/images/mm1xac6f-mw7mz66.png", // Placeholder
+    image: "/images/mm1xac6f-mw7mz66.png",
     content: "Mobivogue transformed our business. We saw a 30% increase in retention within the first month. The push notifications are a game changer.",
     stars: 5,
   },
@@ -87,7 +87,6 @@ export default function Testimonials() {
         </div>
 
         <div className="relative max-w-6xl mx-auto">
-          {/* Carousel Viewport */}
           <div className="overflow-hidden px-4" ref={emblaRef}>
             <div className="flex -ml-4">
               {testimonials.map((testimonial, index) => {
@@ -115,7 +114,6 @@ export default function Testimonials() {
 
                     <div className="flex items-center gap-4 mt-auto">
                       <div className="w-12 h-12 rounded-full bg-slate-700 relative overflow-hidden border-2 border-slate-600">
-                         {/* Placeholder Avatar */}
                          <Image 
                            src={testimonial.image} 
                            alt={testimonial.name}
@@ -134,7 +132,6 @@ export default function Testimonials() {
             </div>
           </div>
 
-          {/* Navigation Buttons */}
           <button 
             onClick={scrollPrev}
             className="absolute top-1/2 -left-4 lg:-left-12 -translate-y-1/2 w-10 h-10 rounded-full bg-slate-800 border border-slate-700 text-white flex items-center justify-center hover:bg-slate-700 transition-colors z-20 shadow-lg"
@@ -150,7 +147,6 @@ export default function Testimonials() {
             <ChevronRight className="w-5 h-5" />
           </button>
 
-          {/* Dots */}
           <div className="flex justify-center gap-2 mt-10">
             {scrollSnaps.map((_, index) => (
               <button

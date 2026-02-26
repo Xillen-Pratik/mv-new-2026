@@ -30,7 +30,7 @@ export default function FeatureTeaser() {
             {/* Image */}
             <div className="relative w-full aspect-[4/3] mb-10">
                <Image
-                 src="/images/mm1xac6f-um75dyw.png" // Updated image from screenshot
+                 src="/images/mm1xac6f-um75dyw.png"
                  alt="Before: Old Way"
                  fill
                  className="object-contain"
@@ -82,7 +82,7 @@ export default function FeatureTeaser() {
             {/* Image */}
             <div className="relative w-full aspect-[4/3] mb-10">
                <Image
-                 src="/images/mm1xac6f-mw7mz66.png" // Updated image from screenshot
+                 src="/images/mm1xac6f-mw7mz66.png"
                  alt="After: Utility Commerce"
                  fill
                  className="object-contain"

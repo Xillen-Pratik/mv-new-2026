@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Column */}
-          <div className="flex flex-col items-start text-left max-w-xl">
+          <div className="flex flex-col items-start text-left max-w-xxl">
             {/* Shopify Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-slate-50 text-slate-600 text-xs font-bold uppercase mb-8 border border-slate-200 tracking-wider">
                <div className="w-15 h-5 relative">

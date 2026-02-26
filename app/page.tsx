@@ -1,14 +1,14 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import LogosBar from "@/components/LogosBar";
-import ProblemSection from "@/components/ProblemSection";
-import FeatureTeaser from "@/components/FeatureTeaser";
-import IndustryTabs from "@/components/IndustryTabs";
-import Testimonials from "@/components/Testimonials";
-import PlatformOverview from "@/components/PlatformOverview";
-import Pricing from "@/components/Pricing";
-import CTABanner from "@/components/CTABanner";
-import Footer from "@/components/Footer";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Hero from "@/components/home/Hero";
+import LogosBar from "@/components/home/LogosBar";
+import ProblemSection from "@/components/home/ProblemSection";
+import FeatureTeaser from "@/components/home/FeatureTeaser";
+import IndustryTabs from "@/components/home/IndustryTabs";
+import Testimonials from "@/components/home/Testimonials";
+import PlatformOverview from "@/components/home/PlatformOverview";
+import Pricing from "@/components/home/Pricing";
+import CTABanner from "@/components/home/CTABanner";
 
 export default function Home() {
   return (

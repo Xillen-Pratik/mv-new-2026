@@ -6,19 +6,19 @@ export default function PlatformOverview() {
       icon: RefreshCw,
       title: "Automated Store Sync",
       description: "Products, inventory, and collections sync in real-time. No manual updates required ever.",
-      color: "text-blue-500 bg-[#DBEAFE]", // Matching light blue background
+      color: "text-blue-500 bg-[#DBEAFE]",
     },
     {
       icon: BarChart,
       title: "Deep Data Analytics",
       description: "Track installs, active users, and revenue directly from your dashboard or integrate with GA4.",
-      color: "text-purple-500 bg-[#F3E8FF]", // Matching light purple background
+      color: "text-purple-500 bg-[#F3E8FF]",
     },
     {
       icon: LifeBuoy,
       title: "24/7 Priority Support",
       description: "Our team of mobile experts is always ready to help you optimize your app for conversions.",
-      color: "text-green-500 bg-[#DCFCE7]", // Matching light green background
+      color: "text-green-500 bg-[#DCFCE7]",
     },
   ];
 
