@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const socialIcons = [
   { name: 'LinkedIn', href: '#', src: '/images/linkedin.svg' },
-  { name: 'Facebook', href: '#', src: '/images/mm1xac4f-aj4w7us.svg' },
+  { name: 'Facebook', href: '#', src: '/images/facebook.svg' },
   { name: 'Instagram', href: '#', src: '/images/instagram.svg' },
   { name: 'X', href: '#', src: '/images/X.svg' },
 ];
