@@ -29,7 +29,7 @@ export default function CTABanner() {
 
           <div className="relative h-[380px] lg:h-[480px] w-full flex items-center justify-center lg:justify-end">
             <Image
-              src="/images/Frame 1000007080.png"
+              src="/images/cta-banner.svg"
               alt="MobiVogue app illustration"
               fill
               className="object-contain object-right"

@@ -149,23 +149,27 @@ export default function IndustryTabs() {
         </div>
 
         {/* Tabs Navigation */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {tabs.map((tab) => {
-            const isActive = activeTabId === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTabId(tab.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all border ${
-                  isActive
-                    ? 'bg-[#5D5CDE] text-white border-[#5D5CDE] shadow-md'
-                    : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-700'
-                }`}
-              >
-                {tab.label}
-              </button>
-            );
-          })}
+        <div className="mb-12 -mx-4 md:mx-0">
+          <div className="overflow-x-auto scrollbar-thin scrollbar-thumb-slate-100 scrollbar-track-transparent">
+            <div className="flex flex-nowrap justify-start md:justify-center gap-2 md:gap-4 px-2 md:px-0">
+              {tabs.map((tab) => {
+                const isActive = activeTabId === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTabId(tab.id)}
+                    className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all border whitespace-nowrap ${
+                      isActive
+                        ? 'bg-[#5D5CDE] text-white border-[#5D5CDE] shadow-md'
+                        : 'bg-white text-slate-500 border-slate-200 hover:border-slate-300 hover:text-slate-700'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
         {/* Tab Content: left 300px, right 650px, 56px gap */}

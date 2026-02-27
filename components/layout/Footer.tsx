@@ -1,14 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Twitter, Instagram, Facebook } from 'lucide-react';
 
-function LinkedinIcon({ className }: { className?: string }) {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className={className}>
-      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-    </svg>
-  );
-}
+const socialIcons = [
+  { name: 'LinkedIn', href: '#', src: '/images/linkedin.svg' },
+  { name: 'Facebook', href: '#', src: '/images/mm1xac4f-aj4w7us.svg' },
+  { name: 'Instagram', href: '#', src: '/images/instagram.svg' },
+  { name: 'X', href: '#', src: '/images/X.svg' },
+];
 
 /** Site footer: logo, tagline, social icons (white), link columns aligned right, copyright bar. */
 export default function Footer() {
@@ -55,22 +53,15 @@ export default function Footer() {
               The #1 no-code mobile app builder for Shopify merchants. Turn your store into a powerful mobile app in minutes.
             </p>
             <div className="flex gap-3">
-              <Link href="#" className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-900" aria-label="LinkedIn">
-                <LinkedinIcon className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-900" aria-label="Facebook">
-                <Facebook className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-900" aria-label="Instagram">
-                <Instagram className="w-4 h-4" />
-              </Link>
-              <Link href="#" className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-slate-900" aria-label="X">
-                <Twitter className="w-4 h-4" />
-              </Link>
+              {socialIcons.map(({ name, href, src }) => (
+                <Link key={name} href={href} className="w-9 h-9 rounded-full bg-white flex items-center justify-center overflow-hidden" aria-label={name}>
+                  <Image src={src} alt={name} width={30} height={30} className="object-contain" />
+                </Link>
+              ))}
             </div>
           </div>
 
-          <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:justify-between lg:justify-end gap-[100px] sm:gap-[100px] lg:pl-12 xl:pl-16">
+          <div className="flex-1 min-w-0 flex flex-col sm:flex-row sm:justify-between lg:justify-end gap-[32px] sm:gap-[100px] lg:gap-[140px] lg:pl-12 xl:pl-16">
             <div className="sm:min-w-[8rem]">
               <h4 className="font-bold text-white mb-5 text-sm">Product</h4>
               <ul className="space-y-3">

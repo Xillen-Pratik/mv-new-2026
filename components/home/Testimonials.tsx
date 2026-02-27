@@ -9,49 +9,47 @@ import Image from 'next/image';
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Jenkins",
-    role: "Founder, Glow Beauty",
-    image: "/images/mm1xac6f-mw7mz66.png",
-    content: "Mobivogue transformed our business. We saw a 30% increase in retention within the first month. The push notifications are a game changer.",
+    name: "Alex Bestall",
+    role: "Founder at Rightsify Music",
+    image: "/images/Alex.svg",
+    content: "I'm really pleased with the mobile app designed for my music store. It has a professional look and is incredibly user-friendly. I would wholeheartedly recommend the MobiVogue team.",
     stars: 5,
   },
   {
     id: 2,
-    name: "Michael Chen",
-    role: "CEO, Urban Wear",
-    image: "/images/mm1xac6f-mytsr3j.png",
-    content: "The best investment we made this year. Setting it up took less than 24 hours and the support team is incredible.",
+    name: "Scott",
+    role: "Franchise owner from US",
+    image: "/images/Scott.svg",
+    content: "I’ve worked with the MobiVogue team to convert over 3 of our Shopify stores into a unified mobile app for our franchise network. Their quick response time and dependable technical support have been key reasons we’ve continued partnering with them.",
     stars: 5,
   },
   {
     id: 3,
-    name: "Jessica Williams",
-    role: "Marketing Director, Pure Life",
-    image: "/images/mm1xac6f-nj7n79t.png",
-    content: "Our customers love the app. It's faster than our mobile site and the exclusive app-only drops sell out in minutes.",
+    name: "Founder",
+    role: "French Bonkerz",
+    image: "/images/French-bonkerz.svg",
+    content: "My Shopify store went live in just a week, and within two days, MobiVogue had my mobile app up and running! The app looks stunning and works seamlessly with my store",
     stars: 5,
   },
   {
     id: 4,
-    name: "David Miller",
-    role: "Owner, Tech Gadgets",
-    image: "/images/mm1xac6f-o0x5702.png",
-    content: "Seamless integration with Shopify. Inventory syncs perfectly and the design customization is top notch.",
-    stars: 5,
-  },
-  {
-    id: 5,
-    name: "Emma Davis",
-    role: "Founder, Little Steps",
-    image: "/images/mm1xac6f-um75dyw.png",
-    content: "I was skeptical at first, but the results speak for themselves. Mobile app revenue now accounts for 40% of our total sales.",
+    name: "Anil Mendpara",
+    role: "Founder & CEO, Hamercop",
+    image: "/images/Anil.svg",
+    content: "We are using MobiVogue team to create mobile app for our business. I must say they are outstanding in turning my Shopify store into mobile app and helping me to increase my ROI.",
     stars: 5,
   },
 ];
 
 export default function Testimonials() {
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'center', skipSnaps: false },
+    {
+      loop: true,
+      align: 'center',
+      skipSnaps: false,
+      containScroll: false,
+      duration: 35,
+    },
     [Autoplay({ delay: 4000, stopOnMouseEnter: true })]
   );
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -92,9 +90,9 @@ export default function Testimonials() {
               {testimonials.map((testimonial, index) => {
                  const isSelected = index === selectedIndex;
                  return (
-                <div 
-                  key={testimonial.id} 
-                  className={`flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4 transition-all duration-500 ease-out py-10`}
+                <div
+                  key={testimonial.id}
+                  className={`flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_33.333%] min-w-0 pl-4 py-10`}
                 >
                   <div className={`h-full rounded-3xl p-8 flex flex-col justify-between transition-all duration-500 ${
                     isSelected 

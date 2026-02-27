@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function LogosBar() {
   const logos = [
-    'Frame 1000007039.svg',
+    'Frame 1000007039.png',
     'mm1xac6f-g05npow.png',
     'mm1xac6f-o0x5702.png',
     'mm1xac6f-mytsr3j.png',
