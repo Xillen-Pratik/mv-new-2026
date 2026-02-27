@@ -225,7 +225,7 @@ export default function Pricing() {
         <div className="text-center mt-10">
           <Link
             href="#"
-            className="inline-flex items-center justify-center px-8 py-3.5 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover uppercase tracking-wide transition-colors"
+            className="inline-flex w-full sm:w-auto items-center justify-center px-8 py-3.5 rounded-xl font-bold text-white bg-primary hover:bg-primary-hover uppercase tracking-wide transition-colors"
           >
             Compare Plans
           </Link>
